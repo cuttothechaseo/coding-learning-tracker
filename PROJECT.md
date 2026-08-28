@@ -1,153 +1,93 @@
-# Blackjack Project
+# Coding Learning Tracker Project
 
-## Project Overview
+## Purpose
 
-Build a terminal-based blackjack game in Python. One player competes against a
-computer-controlled dealer using a standard 52-card deck.
+Build a terminal-based Python application for recording completed coding
+projects and the lessons learned from them. The main learning goal is to
+understand how data moves from terminal input, through program logic, into
+structured Python data, then into JSON storage and back again on a later run.
 
-The project should remain simple and understandable. Each new function should
-be added only when it has a clear responsibility.
+The project should remain small and understandable. The record structure and
+program organization should grow only when the current feature creates a clear
+need.
 
 ## Version 1 Scope
 
-The first complete version should support:
+A complete first version should support:
 
-- A standard deck with ranks and suits
-- A shuffled deck
-- A player hand and dealer hand
-- An initial two-card deal
-- Correct numeric and face-card values
-- Aces counting as 1 or 11 when appropriate
-- Player hit and stand choices
-- Dealer drawing until reaching at least 17
-- Bust detection
-- Win, loss, and tie outcomes
-- Validated terminal input
-- Repeated rounds
+- Adding a learning record with a stable ID, title, status, and a small set of
+  useful learning details
+- Viewing all saved records
+- Updating a record or marking it complete
+- Deleting a record
+- Searching records by title
+- Filtering records by status or concept
+- Saving records to JSON
+- Loading saved records when the program starts
 
-Keep the first version focused:
+The exact record fields will be chosen before implementation and kept minimal.
+Classes, a database, a graphical interface, user accounts, and extensive
+reporting are outside Version 1.
 
-- One player and one dealer
-- Dealer stands on all totals of 17 or more
-- A fresh shuffled deck may be created for each round
-- No splitting, doubling down, insurance, or surrender
-- Betting and bankroll tracking can be added after the card game works
+## Concepts Reinforced
+
+- Functions with clear responsibilities
+- Parameters, arguments, local variables, and return values
+- Lists and dictionaries, including mutation and data shape
+- Loops, conditionals, and input validation
+- Multiple helper functions coordinated by `main()`
+- Reading tracebacks and debugging state changes
+
+## New Concepts
+
+- Reading from and writing to files
+- JSON serialization and deserialization
+- Persistent state across separate program runs
+- CRUD operations: create, read, update, and delete
+- Stable record IDs
+- Searching and filtering collections of dictionaries
+- Handling missing, empty, or malformed data files
+- Separating storage, program logic, and terminal interaction when those
+  boundaries become useful
 
 ## Development Progression
 
-### Phase 1 — Card Movement
+### 1. Choose One Record Shape
 
-Choose a simple representation for a card, build a small deck, and draw one
-card from the deck into a hand.
+Agree on a small dictionary structure and create one example record in memory.
+Be able to identify the type and purpose of every field.
 
-Reinforces:
+### 2. Add and View Records in Memory
 
-- Lists and dictionaries or tuples
-- List mutation
-- Parameters and return values
-- Moving one value between collections
+Store records in a collection, add a record through terminal input, and display
+the records clearly. Trace each value from input to the stored dictionary.
 
-Goal: draw one card and clearly show the changed deck and hand.
+### 3. Save and Load JSON
 
-### Phase 2 — Full Deck and Initial Deal
+Write the record collection to a JSON file and load it when the program starts.
+Confirm that the loaded Python data has the expected types and shape.
 
-Build and shuffle a 52-card deck, then deal two cards each to the player and
-dealer.
+### 4. Identify and Change One Record
 
-Reinforces:
+Assign stable IDs, then use an ID to update a record, mark it complete, or
+delete it without depending on list position.
 
-- Nested loops
-- Constructing collections
-- Random shuffling
-- Repeated function calls
-- Multiple changing hands
+### 5. Search and Filter
 
-Goal: every card is valid, no card is dealt twice, and both hands contain two
-cards.
+Search records by title and filter them by one useful field such as status or
+concept.
 
-### Phase 3 — Hand Values
+### 6. Refine the Program Structure
 
-Calculate the value of a hand.
-
-Rules:
-
-- Number cards use their printed value
-- Jack, Queen, and King count as 10
-- An Ace counts as 11 unless that would bust the hand, in which case it can
-  count as 1
-
-Reinforces:
-
-- Accumulators
-- Conditional calculations
-- Multiple Aces
-- Separating representation from calculation
-
-Goal: correctly value ordinary hands, face cards, soft hands, and hands with
-multiple Aces.
-
-### Phase 4 — Player Turn
-
-Let the player repeatedly choose hit or stand.
-
-Reinforces:
-
-- Input validation
-- `while` loops
-- Changing hand state
-- Bust and stopping conditions
-
-Goal: the player's turn ends only after standing or busting.
-
-### Phase 5 — Dealer Turn
-
-Have the dealer draw automatically until reaching at least 17.
-
-Reinforces:
-
-- Automated decisions
-- Reusing draw and hand-value functions
-- Separating player behavior from dealer behavior
-
-Goal: the dealer follows one consistent rule without user input.
-
-### Phase 6 — Determine the Outcome
-
-Compare the completed hands and report a win, loss, or tie.
-
-Reinforces:
-
-- Ordering conditional rules
-- Handling busts before comparing totals
-- Returning a useful result instead of only printing
-
-Goal: every completed round produces one correct outcome.
-
-### Phase 7 — Repeated Games and Bankroll
-
-Allow repeated rounds and optionally add betting after the core game is stable.
-
-Reinforces:
-
-- One-round versus whole-game responsibilities
-- State across rounds
-- Validation against a current bankroll
-- Function orchestration
-
-Goal: the game can continue cleanly without mixing deck, hand, and bankroll
-state between rounds.
+Add validation and basic file-error handling. Split storage or record logic
+into separate modules only after the code has developed clear, repeated
+responsibilities.
 
 ## Definition of Success
 
-The project is successful when the learner can explain:
-
-- How a card is represented
-- How the deck is built, shuffled, and reduced as cards are drawn
-- How player and dealer hands change independently
-- How hand values and Aces are calculated
-- Why each turn continues or stops
-- How the outcome is determined
-- How data moves between the major functions
-
-Completing the advanced casino rules is not required for Version 1.
-
+The project is successful when the learner can build and explain a coherent
+terminal application that preserves records between runs and supports the
+bounded Version 1 operations. In particular, the learner should be able to
+trace one record from terminal input to a Python dictionary, through the
+collection and JSON file, and back into the program with its identity and data
+intact.
