@@ -76,6 +76,17 @@ def save_records(records):
         json.dump(records, file, indent=4)
 
 
+def search_records_by_title(records, search_term):
+    matches = []
+    search_term = search_term.lower()
+
+    for record in records:
+        if search_term in record["title"].lower():
+            matches.append(record)
+
+    return matches
+
+
 def main():
     records = load_records()
     while True:
@@ -83,8 +94,9 @@ def main():
         print("1: Add a record")
         print("2: View records")
         print("3: Mark a record complete")
-        print("4: Quit")
-        choice = input("Enter your choice: (1-4)")
+        print("4: Delete a record")
+        print("5: Quit")
+        choice = input("Enter your choice: (1-5)")
 
         if choice == "1":
             next_id = get_next_id(records)
@@ -107,9 +119,21 @@ def main():
                 print("Input a valid number")
                 continue
         elif choice == "4":
+            try:
+                record_id = int(input("Input record ID you want to delete:"))
+                result = delete_record(records, record_id)
+                if result == True:
+                    save_records(records)
+                    print("Record deleted successfully.")
+                elif result == False:
+                    print("ID was not found.")
+            except ValueError:
+                print("Input a valid number")
+                continue
+        elif choice == "5":
             break
         else:
-            print("Invalid choice. Please enter 1, 2, 3, or 4.")
+            print("Invalid choice. Please enter 1, 2, 3, 4, or 5.")
 
 
 if __name__ == "__main__":
