@@ -87,6 +87,17 @@ def search_records_by_title(records, search_term):
     return matches
 
 
+def filter_records_by_status(records, status):
+    matches = []
+    status = status.lower()
+
+    for record in records:
+        if status == record["status"].lower():
+            matches.append(record)
+
+    return matches
+
+
 def main():
     records = load_records()
     while True:
