@@ -95,8 +95,9 @@ def main():
         print("2: View records")
         print("3: Mark a record complete")
         print("4: Delete a record")
-        print("5: Quit")
-        choice = input("Enter your choice: (1-5)")
+        print("5: Search records by title")
+        print("6: Quit")
+        choice = input("Enter your choice: (1-6)")
 
         if choice == "1":
             next_id = get_next_id(records)
@@ -131,9 +132,13 @@ def main():
                 print("Input a valid number")
                 continue
         elif choice == "5":
+            search_term = input("Input a search term:")
+            matching_records = search_records_by_title(records, search_term)
+            view_records(matching_records)
+        elif choice == "6":
             break
         else:
-            print("Invalid choice. Please enter 1, 2, 3, 4, or 5.")
+            print("Invalid choice. Please enter 1, 2, 3, 4, 5, or 6.")
 
 
 if __name__ == "__main__":
