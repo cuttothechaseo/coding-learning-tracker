@@ -1,14 +1,4 @@
-import json
-
-
-def load_records():
-    try:
-        with open("records.json", "r") as file:
-            loaded_records = json.load(file)
-    except FileNotFoundError:
-        return []
-
-    return loaded_records
+from storage import load_records, save_records
 
 
 def create_record(record_id):
@@ -69,11 +59,6 @@ def get_next_id(records):
         highest_id = max(highest_id, record["id"])
 
     return highest_id + 1
-
-
-def save_records(records):
-    with open("records.json", "w") as file:
-        json.dump(records, file, indent=4)
 
 
 def search_records_by_title(records, search_term):
