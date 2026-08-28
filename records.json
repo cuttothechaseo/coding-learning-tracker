@@ -1,42 +1,75 @@
 [
     {
+        "id": 1,
+        "title": "War",
+        "status": "complete",
+        "concepts": [
+            "functions",
+            "loops",
+            "conditionals",
+            "lists",
+            "randomness"
+        ],
+        "biggest_lesson": "Breaking a card game into smaller functions makes the round flow easier to reason about.",
+        "next_step": "Practice coordinating more state across multiple functions."
+    },
+    {
         "id": 2,
-        "title": "hi",
-        "status": "in progress",
-        "concepts": [],
-        "biggest_lesson": "",
-        "next_step": ""
+        "title": "Tic-Tac-Toe",
+        "status": "complete",
+        "concepts": [
+            "board representation",
+            "input validation",
+            "loops",
+            "functions",
+            "win conditions"
+        ],
+        "biggest_lesson": "A clear board representation and small helper functions make win-condition logic manageable.",
+        "next_step": "Build a project with repeated state changes and more complex validation."
     },
     {
         "id": 3,
-        "title": "chase",
+        "title": "Roulette",
         "status": "complete",
-        "concepts": [],
-        "biggest_lesson": "",
-        "next_step": ""
+        "concepts": [
+            "input validation",
+            "random number generation",
+            "bankroll state",
+            "repeated rounds",
+            "return values",
+            "stopping conditions"
+        ],
+        "biggest_lesson": "Changing state must be recalculated and reassigned during every round that depends on it.",
+        "next_step": "Coordinate multiple changing collections and turn loops in a larger card game."
     },
     {
         "id": 4,
-        "title": "Persistent Record",
-        "status": "in progress",
-        "concepts": [],
-        "biggest_lesson": "",
-        "next_step": ""
+        "title": "Blackjack",
+        "status": "complete",
+        "concepts": [
+            "tuple card representation",
+            "deck construction and shuffling",
+            "list mutation",
+            "multiple-Ace adjustment",
+            "player and dealer turn loops",
+            "function orchestration"
+        ],
+        "biggest_lesson": "Tracing deck, hand, and total values across cooperating functions clarifies when to mutate data and when to use a return value.",
+        "next_step": "Learn persistent structured data through file handling and JSON."
     },
     {
         "id": 5,
-        "title": "test3",
-        "status": "in progress",
-        "concepts": [],
-        "biggest_lesson": "",
-        "next_step": ""
-    },
-    {
-        "id": 6,
-        "title": "testing",
-        "status": "in progress",
-        "concepts": [],
-        "biggest_lesson": "",
-        "next_step": ""
+        "title": "Coding Learning Tracker",
+        "status": "complete",
+        "concepts": [
+            "file I/O",
+            "JSON serialization",
+            "CRUD operations",
+            "stable IDs",
+            "searching and filtering",
+            "multi-file architecture"
+        ],
+        "biggest_lesson": "Structured data can move from terminal input through program logic into JSON and back while each module keeps a clear responsibility.",
+        "next_step": "Apply persistence and modular design in a new Python project."
     }
 ]
