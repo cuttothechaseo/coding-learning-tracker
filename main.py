@@ -107,8 +107,9 @@ def main():
         print("3: Mark a record complete")
         print("4: Delete a record")
         print("5: Search records by title")
-        print("6: Quit")
-        choice = input("Enter your choice: (1-6)")
+        print("6: Filter records by status")
+        print("7: Quit")
+        choice = input("Enter your choice: (1-7)")
 
         if choice == "1":
             next_id = get_next_id(records)
@@ -147,9 +148,13 @@ def main():
             matching_records = search_records_by_title(records, search_term)
             view_records(matching_records)
         elif choice == "6":
+            status = input("Search for a status:")
+            matching_records = filter_records_by_status(records, status)
+            view_records(matching_records)
+        elif choice == "7":
             break
         else:
-            print("Invalid choice. Please enter 1, 2, 3, 4, 5, or 6.")
+            print("Invalid choice. Please enter 1, 2, 3, 4, 5, 6, or 7.")
 
 
 if __name__ == "__main__":
