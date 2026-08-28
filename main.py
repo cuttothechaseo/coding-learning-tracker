@@ -73,8 +73,9 @@ def main():
         print("-- Main Menu --")
         print("1: Add a record")
         print("2: View records")
-        print("3: Quit")
-        choice = input("Enter your choice: (1-3)")
+        print("3: Mark a record complete")
+        print("4: Quit")
+        choice = input("Enter your choice: (1-4)")
 
         if choice == "1":
             next_id = get_next_id(records)
@@ -85,9 +86,21 @@ def main():
         elif choice == "2":
             view_records(records)
         elif choice == "3":
+            try:
+                record_id = int(input("Input record ID you want to change:"))
+                result = mark_record_complete(records, record_id)
+                if result == True:
+                    save_records(records)
+                    print("Status updated successfully.")
+                elif result == False:
+                    print("ID was not found.")
+            except ValueError:
+                print("Input a valid number")
+                continue
+        elif choice == "4":
             break
         else:
-            print("Invalid choice. Please enter 1, 2, or 3.")
+            print("Invalid choice. Please enter 1, 2, 3, or 4.")
 
 
 if __name__ == "__main__":
