@@ -25,6 +25,14 @@ def create_record(record_id):
     return result_dict
 
 
+def handle_add_record(records):
+    next_id = get_next_id(records)
+    record = create_record(next_id)
+    records.append(record)
+    save_records(records)
+    print("Record added successfully.")
+
+
 def view_records(records):
     if records == []:
         print("No records found.")
@@ -47,6 +55,32 @@ def handle_mark_complete(records):
         return
 
 
+def handle_delete_record(records):
+    try:
+        record_id = int(input("Input record ID you want to delete:"))
+        result = delete_record(records, record_id)
+        if result == True:
+            save_records(records)
+            print("Record deleted successfully.")
+        elif result == False:
+            print("ID was not found.")
+    except ValueError:
+        print("Input a valid number")
+        return
+
+
+def handle_search_records(records):
+    search_term = input("Input a search term:")
+    matching_records = search_records_by_title(records, search_term)
+    view_records(matching_records)
+
+
+def handle_filter_records(records):
+    status = input("Search for a status:")
+    matching_records = filter_records_by_status(records, status)
+    view_records(matching_records)
+
+
 def main():
     records = load_records()
     while True:
@@ -61,35 +95,17 @@ def main():
         choice = input("Enter your choice: (1-7)")
 
         if choice == "1":
-            next_id = get_next_id(records)
-            record = create_record(next_id)
-            records.append(record)
-            save_records(records)
-            print("Record added successfully.")
+            handle_add_record(records)
         elif choice == "2":
             view_records(records)
         elif choice == "3":
             handle_mark_complete(records)
         elif choice == "4":
-            try:
-                record_id = int(input("Input record ID you want to delete:"))
-                result = delete_record(records, record_id)
-                if result == True:
-                    save_records(records)
-                    print("Record deleted successfully.")
-                elif result == False:
-                    print("ID was not found.")
-            except ValueError:
-                print("Input a valid number")
-                continue
+            handle_delete_record(records)
         elif choice == "5":
-            search_term = input("Input a search term:")
-            matching_records = search_records_by_title(records, search_term)
-            view_records(matching_records)
+            handle_search_records(records)
         elif choice == "6":
-            status = input("Search for a status:")
-            matching_records = filter_records_by_status(records, status)
-            view_records(matching_records)
+            handle_filter_records(records)
         elif choice == "7":
             break
         else:

@@ -7,6 +7,8 @@ def load_records():
             loaded_records = json.load(file)
     except FileNotFoundError:
         return []
+    except json.JSONDecodeError:
+        return []
 
     return loaded_records
 
