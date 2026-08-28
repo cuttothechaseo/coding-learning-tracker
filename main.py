@@ -33,6 +33,20 @@ def view_records(records):
         print(record["id"], record["title"], record["status"])
 
 
+def handle_mark_complete(records):
+    try:
+        record_id = int(input("Input record ID you want to change:"))
+        result = mark_record_complete(records, record_id)
+        if result == True:
+            save_records(records)
+            print("Status updated successfully.")
+        elif result == False:
+            print("ID was not found.")
+    except ValueError:
+        print("Input a valid number")
+        return
+
+
 def main():
     records = load_records()
     while True:
@@ -55,17 +69,7 @@ def main():
         elif choice == "2":
             view_records(records)
         elif choice == "3":
-            try:
-                record_id = int(input("Input record ID you want to change:"))
-                result = mark_record_complete(records, record_id)
-                if result == True:
-                    save_records(records)
-                    print("Status updated successfully.")
-                elif result == False:
-                    print("ID was not found.")
-            except ValueError:
-                print("Input a valid number")
-                continue
+            handle_mark_complete(records)
         elif choice == "4":
             try:
                 record_id = int(input("Input record ID you want to delete:"))
