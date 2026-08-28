@@ -44,6 +44,16 @@ def find_record_by_id(records, record_id):
     return None
 
 
+def mark_record_complete(records, record_id):
+    record = find_record_by_id(records, record_id)
+
+    if record is None:
+        return False
+    else:
+        record["status"] = "complete"
+        return True
+
+
 def get_next_id(records):
     highest_id = 0
     for record in records:
